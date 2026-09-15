@@ -131,6 +131,39 @@
         .reservation-box a:hover {
             color: #b88432;
         }
+
+        .res-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .res-icon {
+            width: 20px;
+            height: 20px;
+            stroke: #154e7d;
+            flex-shrink: 0;
+        }
+
+        .reservation-divider {
+            border: 0;
+            border-top: 1px solid #dfd6c3;
+            margin: 18px 0;
+        }
+
+        .account-number {
+            font-size: 19px;
+            letter-spacing: 0.5px;
+            background: #ffffff;
+            padding: 10px 14px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid #e5dcc9;
+            margin: 6px 0;
+        }
     </style>
 </head>
 <body>
@@ -159,15 +192,15 @@
             </tr>
             <tr>
                 <td>Pokój 2‑osobowy</td>
-                <td>od 150 zł</td>
+                <td>od 250 zł</td>
             </tr>
             <tr>
                 <td>Pokój 3‑osobowy</td>
-                <td>od 180 zł</td>
+                <td>od 320 zł</td>
             </tr>
             <tr>
-                <td>Pokój rodzinny</td>
-                <td>od 220 zł</td>
+                <td>Pokój 4-osobowy</td>
+                <td>od 400 zł</td>
             </tr>
         </table>
 
@@ -175,10 +208,61 @@
 
         <div class="reservation-box">
             <p>Aby dokonać rezerwacji, prosimy o kontakt:</p>
-            <p>📞 Telefon: <strong><a href="tel:665097710">665 097 710</a></strong></p>
-            <p>📧 Email: <strong><a href="mailto:owagawa@ta.pl">owagawa@ta.pl</a></strong></p>
-            <p>🏨 Adres: <strong>ul. Kolejowa 6, 78‑111 Ustronie Morskie</strong></p>
-            <p>Rezerwacja jest potwierdzona po wpłacie zadatku.</p>
+
+            <div class="res-row">
+                <svg class="res-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <span>Telefon: <strong><a href="tel:665097710">665 097 710</a></strong></span>
+            </div>
+
+            <div class="res-row">
+                <svg class="res-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+                <span>Email: <strong><a href="mailto:owagawa@ta.pl">owagawa@ta.pl</a></strong></span>
+            </div>
+
+            <div class="res-row">
+                <svg class="res-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>Adres: <strong>ul. Kolejowa 6, 78‑111 Ustronie Morskie</strong></span>
+            </div>
+
+            <hr class="reservation-divider">
+
+            <p>W celu dokonania rezerwacji prosimy o wpłatę zadatku w wysokości <strong>200 zł</strong> na konto:</p>
+
+            <div class="account-number">
+                <svg class="res-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                    <line x1="2" y1="10" x2="22" y2="10"></line>
+                </svg>
+                <strong>33 1020 2821 0000 1202 0002 0966</strong>
+            </div>
+
+            <p style="margin-top: 14px; margin-bottom: 6px;">lub wysłać pieniądze przekazem pocztowym na adres:</p>
+
+            <div class="res-row">
+                <svg class="res-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <strong>ul. Kolejowa 6, 78‑111 Ustronie Morskie</strong>
+            </div>
+
+            <div class="res-row" style="margin-top: 14px;">
+                <svg class="res-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+                <span><strong>W tytule prosimy podać nazwisko i termin rezerwacji</strong>.</span>
+            </div>
         </div>
 
     </div>
