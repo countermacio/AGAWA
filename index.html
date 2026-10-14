@@ -1,241 +1,1010 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pensjonat AGAWA</title>
+    <title>Pensjonat AGAWA – Wypoczynek w Ustroniu Morskim</title>
+    <meta name="description" content="Kameralny Pensjonat AGAWA w Ustroniu Morskim (ul. Kolejowa 6). Komfortowe pokoje 2, 3 i 4-osobowe blisko morza, prywatny parking, zielony ogród z grillem.">
 
+    <!-- Czcionki Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        baltic: {
+                            DEFAULT: '#154e7d',
+                            dark: '#0d3251',
+                            light: '#1e659f'
+                        },
+                        amberGold: {
+                            DEFAULT: '#b88432',
+                            hover: '#9d6e24',
+                            light: '#e5b364'
+                        },
+                        sand: {
+                            bg: '#fcfbf9',
+                            header: '#efe9d5',
+                            card: '#fbf7ef',
+                            footer: '#ede5d5',
+                            border: '#eadecc'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fbf9f5;
-            color: #2d3437;
-        }
-
-        /* NAGŁÓWEK Z BEŻOWYM TŁEM */
-        header {
-            background-color: #F3EEDB;
-            padding: 10px 20px;
-            text-align: center;
-            box-shadow: 0 3px 10px rgba(70, 50, 30, 0.08);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* LOGO */
-        header img {
-            max-height: 440px;
-            width: auto;
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-            object-fit: contain;
-        }
-
-        /* MENU NAWIGACYJNE */
-        nav {
-            font-size: 20px;
-            text-align: center;
-            padding: 16px;
-            background-color: #ede5d5;
-            border-bottom: 1px solid #dfd6c3;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #154e7d;
-            margin: 0 12px;
-            font-weight: 600;
-            transition: color 0.2s ease;
-        }
-
-        nav a:hover {
-            color: #b88432;
-        }
-
-        .content {
-            padding: 30px 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .content h2 {
-            color: #154e7d;
-            font-size: 28px;
-            margin-top: 30px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #e7dfce;
-            padding-bottom: 8px;
-        }
-
-        /* KARTY POKOI */
-        .rooms {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-
-        .room-card {
-            background: #ffffff;
-            border-radius: 10px;
-            padding: 24px;
-            width: 280px;
-            border: 1px solid #eadecc;
-            box-shadow: 0 4px 12px rgba(80, 65, 45, 0.06);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .room-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 18px rgba(80, 65, 45, 0.12);
-        }
-
-        .room-card h3 {
-            margin-top: 0;
-            color: #154e7d;
-            font-size: 22px;
-        }
-
-        .room-card p {
-            color: #4b555a;
-            line-height: 1.5;
-            font-size: 16px;
-        }
-
-        /* ELEGANCKIE KAFELKI UDOGODNIEŃ Z IKONAMI */
-        .amenities {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-            margin-top: 20px;
-        }
-
-        .amenity {
-            background-color: #f5efe3;
-            border: 1px solid #e5dcc9;
-            color: #154e7d;
-            padding: 16px 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(80, 65, 45, 0.05);
-            font-size: 17px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .amenity:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(80, 65, 45, 0.1);
-        }
-
-        .amenity-icon {
-            width: 26px;
-            height: 26px;
-            stroke: #154e7d;
-            flex-shrink: 0;
-        }
+        /* Ukrycie domyślnego trójkąta w akordeonie FAQ */
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
     </style>
 </head>
-<body>
+<body class="bg-sand-bg text-[#2e363a] font-sans antialiased selection:bg-baltic selection:text-white pb-16 md:pb-0">
 
-    <header>
-        <img src="Logo Agawa.png" alt="Logo Pensjonat AGAWA">
+    <!-- 1. GÓRNY PASEK INFORMACYJNY -->
+    <div class="bg-baltic text-[#f4eee1] text-xs sm:text-sm py-2.5 px-4 border-b border-white/10">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-amberGold-light shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                </svg>
+                <span>ul. Kolejowa 6, 78‑111 Ustronie Morskie</span>
+            </div>
+            <div class="flex items-center gap-5 font-medium">
+                <a href="tel:665097710" class="flex items-center gap-1.5 text-white hover:text-amberGold-light transition">
+                    <svg class="w-4 h-4 text-amberGold-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    665 097 710
+                </a>
+                <a href="mailto:owagawa@ta.pl" class="hidden md:flex items-center gap-1.5 text-white hover:text-amberGold-light transition">
+                    <svg class="w-4 h-4 text-amberGold-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect width="20" height="16" x="2" y="4" rx="2"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                    </svg>
+                    owagawa@ta.pl
+                </a>
+                <span class="hidden lg:inline-block text-xs text-white/80 border-l border-white/20 pl-4">Godz. kontaktu: 8:00 – 20:00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. NAGŁÓWEK Z DUŻYM LOGO (WTOPIONE TŁO) -->
+<!-- 2. NAGŁÓWEK Z LOGO -->
+    <header class="bg-[#F3EEDB] border-b border-sand-border py-4 px-4 flex justify-center items-center">
+        <a href="#start" class="inline-flex flex-col items-center group">
+            <img src="IMG/logo-agawa.png" 
+                 alt="Logo Pensjonat AGAWA" 
+                 class="h-40 sm:h-48 md:h-56 w-auto object-contain transition duration-300 group-hover:scale-105" 
+                 onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';">
+            <div id="logo-fallback" style="display: none;" class="flex-col items-center py-4">
+                <span class="font-serif text-4xl md:text-5xl font-bold tracking-wider text-baltic">AGAWA</span>
+                <span class="text-xs uppercase tracking-[0.25em] text-amberGold font-semibold mt-1">Pensjonat • Ustronie Morskie</span>
+            </div>
+        </a>
     </header>
 
-    <nav>
-        <a href="index.html">Strona główna</a> |
-        <a href="oferta.html">Oferta</a> |
-        <a href="cennik.html">Cennik i rezerwacje</a> |
-        <a href="galeria.html">Galeria</a> |
-        <a href="onas.html">O nas</a> |
-        <a href="kontakt.html">Kontakt</a>
+    <!-- 3. PRZYKLEJONA NAWIGACJA -->
+    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-sand-border shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 flex items-center justify-between h-14 md:h-16">
+            <button id="mobile-menu-btn" class="md:hidden flex items-center gap-2 text-baltic font-semibold text-sm py-2 px-3 rounded-lg hover:bg-sand-card transition" aria-label="Otwórz menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+                <span>Menu</span>
+            </button>
+
+            <div class="hidden md:flex items-center justify-center gap-6 lg:gap-8 mx-auto">
+                <a href="#start" class="text-baltic hover:text-amberGold font-semibold text-sm lg:text-[15px] py-5 border-b-[3px] border-amberGold transition">Strona główna</a>
+                <a href="#oferta" class="text-baltic hover:text-amberGold font-semibold text-sm lg:text-[15px] py-5 border-b-[3px] border-transparent hover:border-amberGold transition">Oferta i pokoje</a>
+                <a href="#udogodnienia" class="text-baltic hover:text-amberGold font-semibold text-sm lg:text-[15px] py-5 border-b-[3px] border-transparent hover:border-amberGold transition">Udogodnienia</a>
+                <a href="#cennik" class="text-baltic hover:text-amberGold font-semibold text-sm lg:text-[15px] py-5 border-b-[3px] border-transparent hover:border-amberGold transition">Cennik i rezerwacje</a>
+                <a href="#galeria" class="text-baltic hover:text-amberGold font-semibold text-sm lg:text-[15px] py-5 border-b-[3px] border-transparent hover:border-amberGold transition">Galeria</a>
+                <a href="#o-nas" class="text-baltic hover:text-amberGold font-semibold text-sm lg:text-[15px] py-5 border-b-[3px] border-transparent hover:border-amberGold transition">O nas i opinie</a>
+                <a href="#faq" class="text-baltic hover:text-amberGold font-semibold text-sm lg:text-[15px] py-5 border-b-[3px] border-transparent hover:border-amberGold transition">FAQ</a>
+                <a href="#kontakt" class="text-baltic hover:text-amberGold font-semibold text-sm lg:text-[15px] py-5 border-b-[3px] border-transparent hover:border-amberGold transition">Kontakt</a>
+            </div>
+
+            <a href="#cennik" class="md:hidden bg-amberGold text-white text-xs font-bold px-3.5 py-2 rounded-lg shadow-sm">
+                Rezerwuj
+            </a>
+        </div>
+
+        <!-- Menu mobilne -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-sand-border px-4 pt-2 pb-4 space-y-1 shadow-lg">
+            <a href="#start" class="mobile-link block py-2.5 px-3 rounded-lg text-baltic font-semibold hover:bg-sand-card">Strona główna</a>
+            <a href="#oferta" class="mobile-link block py-2.5 px-3 rounded-lg text-baltic font-semibold hover:bg-sand-card">Oferta i pokoje</a>
+            <a href="#udogodnienia" class="mobile-link block py-2.5 px-3 rounded-lg text-baltic font-semibold hover:bg-sand-card">Udogodnienia i odległości</a>
+            <a href="#cennik" class="mobile-link block py-2.5 px-3 rounded-lg text-baltic font-semibold hover:bg-sand-card">Cennik i rezerwacje</a>
+            <a href="#galeria" class="mobile-link block py-2.5 px-3 rounded-lg text-baltic font-semibold hover:bg-sand-card">Galeria</a>
+            <a href="#o-nas" class="mobile-link block py-2.5 px-3 rounded-lg text-baltic font-semibold hover:bg-sand-card">O nas i opinie gości</a>
+            <a href="#faq" class="mobile-link block py-2.5 px-3 rounded-lg text-baltic font-semibold hover:bg-sand-card">Najczęstsze pytania (FAQ)</a>
+            <a href="#kontakt" class="mobile-link block py-2.5 px-3 rounded-lg text-baltic font-semibold hover:bg-sand-card">Kontakt i mapa</a>
+        </div>
     </nav>
 
-    <div class="content">
-
-        <h2>Nasze pokoje</h2>
-
-        <div class="rooms">
-            <div class="room-card">
-                <h3>Pokój 2‑osobowy</h3>
-                <p>Przytulny pokój idealny dla par lub dwóch osób. Wygodne łóżka, TV, Wi‑Fi.</p>
-            </div>
-
-            <div class="room-card">
-                <h3>Pokój 3‑osobowy</h3>
-                <p>Większy pokój dla rodziny lub grupy znajomych. Komfort i przestrzeń.</p>
-            </div>
-
-            <div class="room-card">
-                <h3>Pokój rodzinny</h3>
-                <p>Największy pokój w obiekcie — idealny dla rodzin z dziećmi. Dużo miejsca.</p>
-            </div>
-        </div>
-
-        <h2>Udogodnienia</h2>
-
-        <div class="amenities">
-            <div class="amenity">
-                <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="3" width="18" height="18" rx="4"></rect>
-                    <path d="M9 17V7h4a3 3 0 0 1 0 6H9"></path>
-                </svg>
-                <span>Prywatny parking</span>
-            </div>
-
-            <div class="amenity">
-                <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
-                    <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
-                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
-                    <line x1="12" y1="20" x2="12.01" y2="20"></line>
-                </svg>
-                <span>Szybkie Wi‑Fi</span>
-            </div>
-
-            <div class="amenity">
-                <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M2 18c2.5-1 5 1 7.5 0s5-1 7.5 0 5 1 7 0"></path>
-                    <path d="M2 14c2.5-1 5 1 7.5 0s5-1 7.5 0 5 1 7 0"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-                <span>Blisko plaży</span>
-            </div>
-
-            <div class="amenity">
-                <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
-                </svg>
-                <span>Miejsce na grilla</span>
-            </div>
-
-            <div class="amenity">
-                <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
-                    <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
-                </svg>
-                <span>Spokojna okolica</span>
-            </div>
-
-            <div class="amenity">
-                <svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M2 4v16"></path>
-                    <path d="M2 8h18a2 2 0 0 1 2 2v10"></path>
-                    <path d="M2 17h20"></path>
-                    <path d="M6 8v9"></path>
-                </svg>
-                <span>Komfortowe łóżka</span>
+    <!-- 4. SEKCJA HERO: SŁONECZNA PLAŻA NAD BAŁTYKIEM -->
+    <section id="start" class="relative min-h-[500px] md:min-h-[560px] flex items-center justify-center text-center px-4 py-16 bg-cover bg-center" style="background-image: linear-gradient(rgba(13, 50, 81, 0.42), rgba(13, 50, 81, 0.68)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=85');">
+        <div class="max-w-3xl mx-auto text-white">
+            <span class="inline-block bg-amberGold text-white text-xs uppercase tracking-[0.15em] font-bold px-4 py-1.5 rounded-full mb-5 shadow-md">
+                Kameralny pensjonat nad Bałtykiem
+            </span>
+            <h1 class="font-serif text-3xl sm:text-5xl md:text-[54px] font-bold leading-tight mb-5 drop-shadow-md">
+                Spokój, relaks i bliskość morza
+            </h1>
+            <p class="text-base sm:text-lg md:text-xl text-[#f7f3ea] max-w-2xl mx-auto mb-8 leading-relaxed drop-shadow">
+                Od ponad 30 lat tworzymy miejsce, do którego wraca się z uśmiechem. Odpocznij od zgiełku w sercu Ustronia Morskiego.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#cennik" class="bg-amberGold hover:bg-amberGold-hover text-white font-semibold px-7 py-3.5 rounded-xl shadow-lg shadow-amberGold/30 hover:-translate-y-0.5 transition duration-200">
+                    Sprawdź cennik i zapytaj o termin
+                </a>
+                <a href="#kontakt" class="bg-white/95 hover:bg-white text-baltic font-semibold px-7 py-3.5 rounded-xl shadow-md hover:-translate-y-0.5 transition duration-200">
+                    Kontakt i dojazd
+                </a>
             </div>
         </div>
+    </section>
 
+    <!-- 5. ATUTY W PIGUŁCE (4 FILARY OFERTY) -->
+    <section class="max-w-6xl mx-auto px-4 -mt-8 md:-mt-12 relative z-10 mb-16">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+            <div class="bg-white rounded-xl p-5 border border-sand-border shadow-lg shadow-stone-900/5 flex items-start gap-4">
+                <span class="text-3xl shrink-0">🌊</span>
+                <div>
+                    <strong class="block text-baltic text-base font-bold">Blisko morza</strong>
+                    <p class="text-xs sm:text-sm text-stone-600 mt-0.5">Do szerokiej plaży dojdziesz spacerem w kilka minut.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl p-5 border border-sand-border shadow-lg shadow-stone-900/5 flex items-start gap-4">
+                <span class="text-3xl shrink-0">🌳</span>
+                <div>
+                    <strong class="block text-baltic text-base font-bold">Spokojna okolica</strong>
+                    <p class="text-xs sm:text-sm text-stone-600 mt-0.5">Cicha część miejscowości z zielonym ogrodem.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl p-5 border border-sand-border shadow-lg shadow-stone-900/5 flex items-start gap-4">
+                <span class="text-3xl shrink-0">🚗</span>
+                <div>
+                    <strong class="block text-baltic text-base font-bold">Prywatny parking</strong>
+                    <p class="text-xs sm:text-sm text-stone-600 mt-0.5">Bezpieczne miejsce postojowe na ogrodzonym terenie.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl p-5 border border-sand-border shadow-lg shadow-stone-900/5 flex items-start gap-4">
+                <span class="text-3xl shrink-0">🏡</span>
+                <div>
+                    <strong class="block text-baltic text-base font-bold">Rodzinna atmosfera</strong>
+                    <p class="text-xs sm:text-sm text-stone-600 mt-0.5">Ponad 30 lat gościnności i troski o każdego gościa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="max-w-6xl mx-auto px-4 space-y-24 pb-20">
+
+        <!-- 6. SEKCJA OFERTA I POKOJE -->
+        <section id="oferta" class="scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-amberGold font-bold text-xs uppercase tracking-[0.15em] block mb-2">Nasza baza noclegowa</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-baltic mb-3">Wybierz pokój idealny dla siebie</h2>
+                <p class="text-stone-600 text-base md:text-lg">
+                    Przytulne, czyste i wygodne pokoje dla 2, 3 oraz 4 osób z własnymi łazienkami, telewizorami oraz szybkim Wi‑Fi. Idealne dla rodzin, par i grup znajomych.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Pokój 2-osobowy -->
+                <article class="bg-white rounded-2xl overflow-hidden border border-sand-border shadow-md hover:shadow-xl hover:-translate-y-1.5 transition duration-300 flex flex-col">
+                    <div class="relative h-56 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" alt="Pokój 2-osobowy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute bottom-3 right-3 bg-baltic/95 backdrop-blur-sm text-white font-bold text-sm px-3.5 py-1.5 rounded-lg shadow">
+                            od 250 zł / doba
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-serif text-2xl font-bold text-baltic mb-2">Pokój 2‑osobowy</h3>
+                        <p class="text-stone-600 text-sm mb-5 leading-relaxed">
+                            Przytulny, jasny pokój stworzony z myślą o parach lub dwóch osobach szukających ciszy i wygody.
+                        </p>
+                        <ul class="space-y-2 text-sm text-stone-600 mb-6 flex-1">
+                            <li class="flex items-center gap-2.5"><span class="text-amberGold font-bold">✓</span> Wygodne łóżko małżeńskie lub 2 pojedyncze</li>
+                            <li class="flex items-center gap-2.5"><span class="text-amberGold font-bold">✓</span> Własna łazienka z prysznicem</li>
+                            <li class="flex items-center gap-2.5"><span class="text-amberGold font-bold">✓</span> TV, czajnik oraz bezpłatne Wi‑Fi</li>
+                        </ul>
+                        <a href="#cennik" onclick="selectRoomInForm('Pokój 2-osobowy')" class="inline-flex items-center justify-between pt-4 border-t border-sand-border text-baltic hover:text-amberGold font-bold text-sm transition">
+                            <span>Zapytaj o ten pokój</span>
+                            <span>→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Pokój 3-osobowy -->
+                <article class="bg-white rounded-2xl overflow-hidden border border-sand-border shadow-md hover:shadow-xl hover:-translate-y-1.5 transition duration-300 flex flex-col">
+                    <div class="relative h-56 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80" alt="Pokój 3-osobowy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute bottom-3 right-3 bg-baltic/95 backdrop-blur-sm text-white font-bold text-sm px-3.5 py-1.5 rounded-lg shadow">
+                            od 320 zł / doba
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-serif text-2xl font-bold text-baltic mb-2">Pokój 3‑osobowy</h3>
+                        <p class="text-stone-600 text-sm mb-5 leading-relaxed">
+                            Przestronne rozwiązanie dla małej rodziny (2+1) lub trójki znajomych ceniących swobodę.
+                        </p>
+                        <ul class="space-y-2 text-sm text-stone-600 mb-6 flex-1">
+                            <li class="flex items-center gap-2.5"><span class="text-amberGold font-bold">✓</span> Duża przestrzeń do wypoczynku</li>
+                            <li class="flex items-center gap-2.5"><span class="text-amberGold font-bold">✓</span> Własna łazienka, szafa, stół</li>
+                            <li class="flex items-center gap-2.5"><span class="text-amberGold font-bold">✓</span> Czajnik, TV i szybkie Wi‑Fi</li>
+                        </ul>
+                        <a href="#cennik" onclick="selectRoomInForm('Pokój 3-osobowy')" class="inline-flex items-center justify-between pt-4 border-t border-sand-border text-baltic hover:text-amberGold font-bold text-sm transition">
+                            <span>Zapytaj o ten pokój</span>
+                            <span>→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Pokój Rodzinny 4-osobowy -->
+                <article class="bg-white rounded-2xl overflow-hidden border-2 border-amberGold/40 shadow-md hover:shadow-xl hover:-translate-y-1.5 transition duration-300 flex flex-col">
+                    <div class="relative h-56 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Pokój rodzinny 4-osobowy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-3 left-3 bg-amberGold text-white font-bold text-xs uppercase tracking-wider px-3 py-1 rounded-full shadow">
+                            Polecany dla rodzin
+                        </span>
+                        <span class="absolute bottom-3 right-3 bg-baltic/95 backdrop-blur-sm text-white font-bold text-sm px-3.5 py-1.5 rounded-lg shadow">
+                            od 400 zł / doba
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="font-serif text-2xl font-bold text-baltic mb-2">Pokój Rodzinny (4 os.)</h3>
+                        <p class="text-stone-600 text-sm mb-5 leading-relaxed">
+                            Nasz największy wariant. Dużo swobody, przestrzeń dla dzieci i pełen komfort wypoczynku.
+                        </p>
+                        <ul class="space-y-2 text-sm text-stone-600 mb-6 flex-1">
+                            <li class="flex items-center gap-2.5"><span class="text-amberGold font-bold">✓</span> Komfortowy układ dla całej rodziny</li>
+                            <li class="flex items-center gap-2.5"><span class="text-amberGold font-bold">✓</span> Własna duża łazienka</li>
+                            <li class="flex items-center gap-2.5"><span class="text-amberGold font-bold">✓</span> Dostęp do strefy ogrodowej i grilla</li>
+                        </ul>
+                        <a href="#cennik" onclick="selectRoomInForm('Pokój 4-osobowy (Rodzinny)')" class="inline-flex items-center justify-between pt-4 border-t border-sand-border text-baltic hover:text-amberGold font-bold text-sm transition">
+                            <span>Zapytaj o ten pokój</span>
+                            <span>→</span>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 7. SEKCJA UDOGODNIEŃ + ODLEGŁOŚCI W MINUTACH -->
+        <section id="udogodnienia" class="scroll-mt-24 space-y-12">
+            <div>
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <span class="text-amberGold font-bold text-xs uppercase tracking-[0.15em] block mb-2">Komfort pobytu</span>
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-baltic mb-3">Wszystko, czego potrzebujesz na urlopie</h2>
+                    <p class="text-stone-600 text-base">Dbamy o detale, dzięki którym Twój pobyt nad Bałtykiem będzie w pełni bezproblemowy.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <div class="bg-white border border-sand-border rounded-xl p-6 flex items-start gap-4 shadow-sm hover:-translate-y-1 transition">
+                        <div class="w-12 h-12 rounded-xl bg-sand-card border border-sand-border flex items-center justify-center shrink-0 text-baltic">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-baltic text-lg mb-1">Prywatny parking</h4>
+                            <p class="text-stone-600 text-sm">Wygodne miejsca postojowe na ogrodzonym terenie pensjonatu.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-sand-border rounded-xl p-6 flex items-start gap-4 shadow-sm hover:-translate-y-1 transition">
+                        <div class="w-12 h-12 rounded-xl bg-sand-card border border-sand-border flex items-center justify-center shrink-0 text-baltic">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-baltic text-lg mb-1">Szybkie Wi‑Fi</h4>
+                            <p class="text-stone-600 text-sm">Bezpłatny, bezprzewodowy internet dostępny w każdym pokoju.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-sand-border rounded-xl p-6 flex items-start gap-4 shadow-sm hover:-translate-y-1 transition">
+                        <div class="w-12 h-12 rounded-xl bg-sand-card border border-sand-border flex items-center justify-center shrink-0 text-baltic">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M2 18c2.5-1 5 1 7.5 0s5-1 7.5 0 5 1 7 0"/><path d="M2 14c2.5-1 5 1 7.5 0s5-1 7.5 0 5 1 7 0"/><circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-baltic text-lg mb-1">Blisko plaży</h4>
+                            <p class="text-stone-600 text-sm">Krótki spacer dzieli Cię od szerokiej, piaszczystej plaży Bałtyku.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-sand-border rounded-xl p-6 flex items-start gap-4 shadow-sm hover:-translate-y-1 transition">
+                        <div class="w-12 h-12 rounded-xl bg-sand-card border border-sand-border flex items-center justify-center shrink-0 text-baltic">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-baltic text-lg mb-1">Miejsce na grilla</h4>
+                            <p class="text-stone-600 text-sm">Zadbany kącik biesiadny w ogrodzie do wieczornego relaksu.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-sand-border rounded-xl p-6 flex items-start gap-4 shadow-sm hover:-translate-y-1 transition">
+                        <div class="w-12 h-12 rounded-xl bg-sand-card border border-sand-border flex items-center justify-center shrink-0 text-baltic">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-baltic text-lg mb-1">Ogród do dyspozycji gości</h4>
+                            <p class="text-stone-600 text-sm">Cicha, zielona przestrzeń sprzyjająca regeneracji i odpoczynkowi.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-sand-border rounded-xl p-6 flex items-start gap-4 shadow-sm hover:-translate-y-1 transition">
+                        <div class="w-12 h-12 rounded-xl bg-sand-card border border-sand-border flex items-center justify-center shrink-0 text-baltic">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-baltic text-lg mb-1">Komfortowe łóżka</h4>
+                            <p class="text-stone-600 text-sm">Wygodne materace i świeża pościel gwarantujące udany sen.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASEK: ODLEGŁOŚCI W MINUTACH Z UL. KOLEJOWEJ 6 -->
+            <div class="bg-sand-card border border-sand-border rounded-2xl p-6 sm:p-8 shadow-sm">
+                <div class="text-center mb-6">
+                    <span class="text-amberGold font-bold text-xs uppercase tracking-widest">Wszędzie blisko z ul. Kolejowej 6</span>
+                    <h3 class="font-serif text-2xl font-bold text-baltic mt-1">Lokalizacja w pigułce</h3>
+                </div>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 text-center">
+                    <div class="bg-white p-4 rounded-xl border border-sand-border">
+                        <span class="block font-serif text-2xl sm:text-3xl font-bold text-amberGold">~10 min</span>
+                        <span class="text-xs sm:text-sm font-semibold text-baltic block mt-1">Spacerem do plaży i molo</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-sand-border">
+                        <span class="block font-serif text-2xl sm:text-3xl font-bold text-amberGold">~2 min</span>
+                        <span class="text-xs sm:text-sm font-semibold text-baltic block mt-1">Stacja PKP i przystanki</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-sand-border">
+                        <span class="block font-serif text-2xl sm:text-3xl font-bold text-amberGold">~5 min</span>
+                        <span class="text-xs sm:text-sm font-semibold text-baltic block mt-1">Sklepy, piekarnia i obiady</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-sand-border">
+                        <span class="block font-serif text-2xl sm:text-3xl font-bold text-amberGold">~8 min</span>
+                        <span class="text-xs sm:text-sm font-semibold text-baltic block mt-1">Szlak rowerowy Velo Baltica</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. SEKCJA CENNIK, ZASADY REZERWACJI ORAZ SZYBKI FORMULARZ ZAPYTANIA -->
+        <section id="cennik" class="scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-amberGold font-bold text-xs uppercase tracking-[0.15em] block mb-2">Przejrzyste zasady</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-baltic mb-3">Cennik i rezerwacje</h2>
+                <p class="text-stone-600 text-base">Sprawdź ceny noclegów, zadzwoń lub wyślij szybkie zapytanie o wolny termin – bez prowizji portali rezerwacyjnych.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Lewa kolumna: Tabela cennika + Dane do zadatku -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="bg-white rounded-2xl border border-sand-border shadow-md overflow-hidden">
+                        <div class="bg-baltic text-white px-6 py-4 flex items-center justify-between">
+                            <h3 class="font-bold text-lg">Cennik pokoi</h3>
+                            <span class="text-xs bg-white/15 px-2.5 py-1 rounded-full">Cena za dobę</span>
+                        </div>
+                        <div class="divide-y divide-sand-border">
+                            <div class="px-6 py-4 flex items-center justify-between hover:bg-sand-card/60 transition">
+                                <div>
+                                    <span class="font-bold text-baltic block">Pokój 2‑osobowy</span>
+                                    <span class="text-xs text-stone-500">Własna łazienka, TV, Wi‑Fi</span>
+                                </div>
+                                <span class="text-lg font-bold text-amberGold">od 250 zł</span>
+                            </div>
+                            <div class="px-6 py-4 flex items-center justify-between hover:bg-sand-card/60 transition">
+                                <div>
+                                    <span class="font-bold text-baltic block">Pokój 3‑osobowy</span>
+                                    <span class="text-xs text-stone-500">Własna łazienka, czajnik, TV, Wi‑Fi</span>
+                                </div>
+                                <span class="text-lg font-bold text-amberGold">od 320 zł</span>
+                            </div>
+                            <div class="px-6 py-4 flex items-center justify-between hover:bg-sand-card/60 transition">
+                                <div>
+                                    <span class="font-bold text-baltic block">Pokój 4‑osobowy</span>
+                                    <span class="text-xs text-stone-500">Duża łazienka, TV, Wi‑Fi, ogród</span>
+                                </div>
+                                <span class="text-lg font-bold text-amberGold">od 400 zł</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Boks wpłaty zadatku i konta -->
+                    <div class="bg-sand-card rounded-2xl border border-sand-border p-6 shadow-md space-y-4 text-sm text-stone-700">
+                        <h3 class="font-serif text-xl font-bold text-baltic">Potwierdzenie rezerwacji (Zadatek)</h3>
+                        <p>
+                            Po telefonicznym lub mailowym ustaleniu terminu, w celu dokonania rezerwacji prosimy o wpłatę zadatku w wysokości <strong class="text-baltic font-bold">200 zł</strong> na konto:
+                        </p>
+
+                        <div class="bg-white border border-sand-border rounded-xl p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                            <div class="flex items-center gap-2.5">
+                                <svg class="w-5 h-5 text-baltic shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
+                                </svg>
+                                <strong id="bank-account" class="text-baltic font-mono text-sm sm:text-base tracking-tight">33 1020 2821 0000 1202 0002 0966</strong>
+                            </div>
+                            <button onclick="copyAccount()" id="copy-btn" class="bg-sand-header hover:bg-amberGold hover:text-white text-baltic font-semibold text-xs px-3 py-2 rounded-lg border border-sand-border transition shrink-0">
+                                Kopiuj konto
+                            </button>
+                        </div>
+
+                        <p>
+                            Lub przekazem pocztowym na adres: <strong class="text-baltic">ul. Kolejowa 6, 78‑111 Ustronie Morskie</strong>.
+                        </p>
+
+                        <div class="bg-amberGold/10 border border-amberGold/30 text-baltic rounded-xl p-3 flex items-center gap-2.5 text-xs sm:text-sm">
+                            <svg class="w-5 h-5 text-amberGold shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+                            </svg>
+                            <span><strong>W tytule przelewu prosimy podać nazwisko i termin rezerwacji.</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prawa kolumna: Szybki formularz zapytania o termin -->
+                <div class="lg:col-span-6 bg-white rounded-2xl border border-sand-border p-6 sm:p-8 shadow-md">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-amberGold">Szybki kontakt</span>
+                            <h3 class="font-serif text-2xl font-bold text-baltic">Zapytaj o wolny termin</h3>
+                        </div>
+                        <a href="tel:665097710" class="hidden sm:inline-flex items-center gap-1.5 bg-sand-card border border-sand-border text-baltic font-bold text-xs px-3 py-2 rounded-lg hover:border-amberGold transition">
+                            📞 665 097 710
+                        </a>
+                    </div>
+                    <p class="text-stone-600 text-sm mb-6">
+                        Wypełnij krótki formularz – przygotujemy dla Ciebie wiadomość z zapytaniem lub zadzwoń do nas bezpośrednio (8:00–20:00).
+                    </p>
+
+                    <form id="inquiry-form" onsubmit="handleInquirySubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-1">Data przyjazdu *</label>
+                                <input type="date" id="form-checkin" required class="w-full bg-sand-bg border border-sand-border rounded-xl px-3.5 py-2.5 text-sm text-baltic focus:outline-none focus:border-amberGold">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-1">Data wyjazdu *</label>
+                                <input type="date" id="form-checkout" required class="w-full bg-sand-bg border border-sand-border rounded-xl px-3.5 py-2.5 text-sm text-baltic focus:outline-none focus:border-amberGold">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-1">Rodzaj pokoju</label>
+                                <select id="form-room" class="w-full bg-sand-bg border border-sand-border rounded-xl px-3.5 py-2.5 text-sm text-baltic focus:outline-none focus:border-amberGold">
+                                    <option value="Pokój 2-osobowy">Pokój 2‑osobowy (od 250 zł)</option>
+                                    <option value="Pokój 3-osobowy">Pokój 3‑osobowy (od 320 zł)</option>
+                                    <option value="Pokój 4-osobowy (Rodzinny)">Pokój 4‑osobowy (od 400 zł)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-1">Liczba osób</label>
+                                <select id="form-guests" class="w-full bg-sand-bg border border-sand-border rounded-xl px-3.5 py-2.5 text-sm text-baltic focus:outline-none focus:border-amberGold">
+                                    <option value="2 osoby">2 osoby</option>
+                                    <option value="3 osoby">3 osoby</option>
+                                    <option value="4 osoby">4 osoby</option>
+                                    <option value="Więcej (grupa/2 pokoje)">Więcej (np. 2 pokoje)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-1">Imię i nazwisko *</label>
+                                <input type="text" id="form-name" required placeholder="Jan Kowalski" class="w-full bg-sand-bg border border-sand-border rounded-xl px-3.5 py-2.5 text-sm text-baltic focus:outline-none focus:border-amberGold">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-1">Twój telefon *</label>
+                                <input type="tel" id="form-phone" required placeholder="np. 600 100 200" class="w-full bg-sand-bg border border-sand-border rounded-xl px-3.5 py-2.5 text-sm text-baltic focus:outline-none focus:border-amberGold">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-1">Dodatkowe pytania (opcjonalnie)</label>
+                            <textarea id="form-notes" rows="2" placeholder="Np. przyjazd z dzieckiem, pytanie o parking..." class="w-full bg-sand-bg border border-sand-border rounded-xl px-3.5 py-2 text-sm text-baltic focus:outline-none focus:border-amberGold"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-amberGold hover:bg-amberGold-hover text-white font-bold py-3.5 px-6 rounded-xl shadow-md transition">
+                            Wyślij zapytanie o wolny termin
+                        </button>
+
+                        <div id="form-feedback" class="hidden bg-emerald-50 border border-emerald-200 text-emerald-900 rounded-xl p-3.5 text-xs sm:text-sm">
+                            ✓ Otworzyliśmy Twój program pocztowy z gotowym zapytaniem na adres <strong>owagawa@ta.pl</strong>. Aby uzyskać potwierdzenie od ręki, zadzwoń: <a href="tel:665097710" class="font-bold underline">665 097 710</a>.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. SEKCJA GALERIA (Z PODGLĄDEM LIGHTBOX) -->
+        <section id="galeria" class="scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-amberGold font-bold text-xs uppercase tracking-[0.15em] block mb-2">Zobacz nasze otoczenie</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-baltic mb-3">Galeria Pensjonatu AGAWA</h2>
+                <p class="text-stone-600 text-base">Przytulne pokoje, zielony ogród oraz szeroka plaża w Ustroniu Morskim. Kliknij zdjęcie, aby powiększyć.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="group relative h-64 rounded-2xl overflow-hidden border border-sand-border shadow-sm cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=85', 'Przytulne pokoje gościnne')">
+                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" alt="Zdjęcie pokoju" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-baltic-dark/80 via-transparent to-transparent flex items-end p-5">
+                        <span class="text-white font-semibold text-base">Zdjęcie pokoju</span>
+                    </div>
+                </div>
+
+                <div class="group relative h-64 rounded-2xl overflow-hidden border border-sand-border shadow-sm cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1558036117-15d82a90b9b1?auto=format&fit=crop&w=1200&q=85', 'Zielony ogród do dyspozycji gości')">
+                    <img src="https://images.unsplash.com/photo-1558036117-15d82a90b9b1?auto=format&fit=crop&w=800&q=80" alt="Zdjęcie ogrodu" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-baltic-dark/80 via-transparent to-transparent flex items-end p-5">
+                        <span class="text-white font-semibold text-base">Zdjęcie ogrodu</span>
+                    </div>
+                </div>
+
+                <div class="group relative h-64 rounded-2xl overflow-hidden border border-sand-border shadow-sm cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=85', 'Piaszczysta plaża kilka minut od pensjonatu')">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Zdjęcie plaży" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-baltic-dark/80 via-transparent to-transparent flex items-end p-5">
+                        <span class="text-white font-semibold text-base">Zdjęcie plaży</span>
+                    </div>
+                </div>
+
+                <div class="group relative h-64 rounded-2xl overflow-hidden border border-sand-border shadow-sm cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1200&q=85', 'Komfortowe wnętrza pensjonatu')">
+                    <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80" alt="Zdjęcie pensjonatu" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-baltic-dark/80 via-transparent to-transparent flex items-end p-5">
+                        <span class="text-white font-semibold text-base">Zdjęcie pensjonatu</span>
+                    </div>
+                </div>
+
+                <div class="group relative h-64 rounded-2xl overflow-hidden border border-sand-border shadow-sm cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85', 'Strefa wypoczynku i taras')">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Zdjęcie tarasu" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-baltic-dark/80 via-transparent to-transparent flex items-end p-5">
+                        <span class="text-white font-semibold text-base">Zdjęcie tarasu</span>
+                    </div>
+                </div>
+
+                <div class="group relative h-64 rounded-2xl overflow-hidden border border-sand-border shadow-sm cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=85', 'Spokojna nadmorska okolica')">
+                    <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=80" alt="Zdjęcie okolicy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-baltic-dark/80 via-transparent to-transparent flex items-end p-5">
+                        <span class="text-white font-semibold text-base">Zdjęcie okolicy</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. SEKCJA O NAS ORAZ OPINIE GOŚCI -->
+        <section id="o-nas" class="scroll-mt-24 space-y-12">
+            <div class="bg-white rounded-3xl border border-sand-border p-8 md:p-12 shadow-md grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-4">
+                    <span class="text-amberGold font-bold text-xs uppercase tracking-[0.15em] block">Ponad 30 lat tradycji</span>
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-baltic">Kim jesteśmy? Nasza historia</h2>
+                    <p class="text-stone-600 leading-relaxed">
+                        Pensjonat AGAWA to rodzinne miejsce tworzone z pasją, zaangażowaniem i sercem. Historia naszego pensjonatu rozpoczęła się <strong>ponad 30 lat temu</strong> z miłości do Bałtyku i pragnienia stworzenia miejsca, w którym każdy czuje się jak w domu.
+                    </p>
+                    <p class="text-stone-600 leading-relaxed">
+                        To, co zaczynało się jako skromne, rodzinne marzenie, przez ponad trzy dekady rozwijało się wraz z nami. Zmieniały się pokoje i otoczenie, ale jedno pozostało niezmienne – nasza filozofia gościnności. Dla nas AGAWA to nie tylko noclegi, lecz przede wszystkim ludzie, serdeczna atmosfera i troska o każdy szczegół Waszego urlopu.
+                    </p>
+                    <p class="text-stone-600 leading-relaxed">
+                        Dziś z radością gościmy kolejne pokolenia – osoby, które przyjeżdżały do nas jako dzieci, a teraz przyjeżdżają ze swoimi rodzinami. Stawiamy na autentyczność, spokój, bliskość plaży i czystość, dzięki którym pobyt w Ustroniu Morskim pozwala naprawdę odetchnąć od codziennego pośpiechu.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-5 bg-sand-card border border-sand-border rounded-2xl p-6 sm:p-8 space-y-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-baltic text-white font-serif font-bold text-2xl flex items-center justify-center shrink-0">
+                            30+
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-baltic text-lg">Lat doświadczenia</h4>
+                            <p class="text-xs sm:text-sm text-stone-600">Nieprzerwanie gościmy turystów w Ustroniu Morskim.</p>
+                        </div>
+                    </div>
+                    <hr class="border-sand-border">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-amberGold text-white font-serif font-bold text-xl flex items-center justify-center shrink-0">
+                            100%
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-baltic text-lg">Rodzinnej atmosfery</h4>
+                            <p class="text-xs sm:text-sm text-stone-600">Dbamy o czystość, ciszę i życzliwy kontakt każdego dnia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPINIE GOŚCI -->
+<!-- AUTENTYCZNE OPINIE GOŚCI Z GOOGLE I PORTALI TURYSTYCZNYCH -->
+            <div>
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <div class="inline-flex items-center gap-2 bg-white border border-sand-border px-3.5 py-1.5 rounded-full shadow-sm mb-3">
+                        <svg class="w-4 h-4 text-[#4285F4]" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                        </svg>
+                        <span class="text-xs font-bold text-baltic">Ocena 4.9 / 5.0 • Zweryfikowane opinie</span>
+                    </div>
+                    <h3 class="font-serif text-2xl md:text-3xl font-bold text-baltic">Co mówią nasi Goście?</h3>
+                    <p class="text-stone-600 text-sm mt-1">Autentyczne recenzje gości odwiedzających Pensjonat AGAWA w Ustroniu Morskim.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Opinia 1: Magdalena Kapelska -->
+                    <div class="bg-white border border-sand-border rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-amberGold/15 text-amberGold font-bold flex items-center justify-center text-sm">
+                                        MK
+                                    </div>
+                                    <div>
+                                        <strong class="text-baltic text-sm block">Magdalena Kapelska</strong>
+                                        <span class="text-[11px] text-stone-500">Pobyt z dzieckiem i znajomymi</span>
+                                    </div>
+                                </div>
+                                <span class="text-xs bg-emerald-50 text-emerald-700 font-semibold px-2 py-0.5 rounded-full border border-emerald-200">Poleca</span>
+                            </div>
+                            <div class="text-amber-500 text-sm mb-3">★★★★★</div>
+                            <p class="text-stone-600 text-sm leading-relaxed mb-4">
+                                „Mega miejsce i wszystko na tak! Zdecydowanie polecam wszystkim to miejsce. Czyściutko, wszędzie blisko, a obsługa i właściciele bardzo mili. Gościliśmy tu z dzieckiem i ze znajomymi. Gdyby można było, dałabym tysiąc gwiazdek!”
+                            </p>
+                        </div>
+                        <div class="text-[11px] text-stone-600 border-t border-sand-border pt-3 flex items-center justify-between">
+                            <span>Opinia zweryfikowana</span>
+                            <span class="text-stone-600">Sierpień</span>
+                        </div>
+                    </div>
+
+                    <!-- Opinia 2: Andrzej i Ela -->
+                    <div class="bg-white border border-sand-border rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-baltic/10 text-baltic font-bold flex items-center justify-center text-sm">
+                                        AE
+                                    </div>
+                                    <div>
+                                        <strong class="text-baltic text-sm block">Andrzej i Ela</strong>
+                                        <span class="text-[11px] text-stone-500">Goście z Oławy</span>
+                                    </div>
+                                </div>
+                                <span class="text-xs bg-emerald-50 text-emerald-700 font-semibold px-2 py-0.5 rounded-full border border-emerald-200">Poleca</span>
+                            </div>
+                            <div class="text-amber-500 text-sm mb-3">★★★★★</div>
+                            <p class="text-stone-600 text-sm leading-relaxed mb-4">
+                                „Szczerze polecamy. Właściciele bardzo mili, obsługa przesympatyczna, pokoje przestronne i czyściutkie, do morza blisko, a okolica spokojna. Z czystym sumieniem polecamy Pensjonat Agawa na wypoczynek!”
+                            </p>
+                        </div>
+                        <div class="text-[11px] text-stone-600 border-t border-sand-border pt-3 flex items-center justify-between">
+                            <span>Opinia zweryfikowana</span>
+                            <span class="text-stone-600">Czerwiec</span>
+                        </div>
+                    </div>
+
+                    <!-- Opinia 3: Aleksandra Wołek -->
+                    <div class="bg-white border border-sand-border rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-amberGold/15 text-amberGold font-bold flex items-center justify-center text-sm">
+                                        AW
+                                    </div>
+                                    <div>
+                                        <strong class="text-baltic text-sm block">Aleksandra Wołek</strong>
+                                        <span class="text-[11px] text-stone-500">Urlop nad morzem</span>
+                                    </div>
+                                </div>
+                                <span class="text-xs bg-emerald-50 text-emerald-700 font-semibold px-2 py-0.5 rounded-full border border-emerald-200">Poleca</span>
+                            </div>
+                            <div class="text-amber-500 text-sm mb-3">★★★★★</div>
+                            <p class="text-stone-600 text-sm leading-relaxed mb-4">
+                                „Pokoje czyste i wyposażone we wszystko, co potrzebne na udanym urlopie. Wszędzie blisko – zarówno na plażę, jak i do centrum. Bardzo mili właściciele i życzliwa atmosfera. Z pewnością wrócimy!”
+                            </p>
+                        </div>
+                        <div class="text-[11px] text-stone-600 border-t border-sand-border pt-3 flex items-center justify-between">
+                            <span>Opinia zweryfikowana</span>
+                            <span class="text-stone-600">Lipiec</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <!-- 11. SEKCJA FAQ (NAJCZĘSTSZE PYTANIA) -->
+        <section id="faq" class="scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-amberGold font-bold text-xs uppercase tracking-[0.15em] block mb-2">Praktyczne informacje</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-baltic mb-3">Najczęściej zadawane pytania (FAQ)</h2>
+                <p class="text-stone-600 text-base">Sprawdź odpowiedzi na pytania, o które najczęściej pytają nasi Goście przed przyjazdem.</p>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-3">
+                <details class="group bg-white border border-sand-border rounded-2xl p-5 shadow-sm">
+                    <summary class="flex items-center justify-between cursor-pointer font-bold text-baltic text-base">
+                        <span>Jak zarezerwować pokój i ile wynosi zadatek?</span>
+                        <span class="text-amberGold transition group-open:rotate-180">▼</span>
+                    </summary>
+                    <p class="text-stone-600 text-sm mt-3 leading-relaxed border-t border-sand-border pt-3">
+                        Wystarczy zadzwonić pod numer <strong>665 097 710</strong> (w godz. 8:00–20:00) lub napisać na adres <strong>owagawa@ta.pl</strong>. Po ustaleniu terminu rezerwację potwierdza wpłata zadatku w wysokości <strong>200 zł</strong> na konto bankowe <code>33 1020 2821 0000 1202 0002 0966</code> lub przekazem pocztowym na adres pensjonatu (ul. Kolejowa 6, 78‑111 Ustronie Morskie) z podaniem nazwiska i terminu pobytu w tytule.
+                    </p>
+                </details>
+
+                <details class="group bg-white border border-sand-border rounded-2xl p-5 shadow-sm">
+                    <summary class="flex items-center justify-between cursor-pointer font-bold text-baltic text-base">
+                        <span>W jakich godzinach trwa doba hotelowa (zameldowanie i wymeldowanie)?</span>
+                        <span class="text-amberGold transition group-open:rotate-180">▼</span>
+                    </summary>
+                    <p class="text-stone-600 text-sm mt-3 leading-relaxed border-t border-sand-border pt-3">
+                        Standardowo zapraszamy gości na zameldowanie od godziny <strong>14:00</strong> w dniu przyjazdu, natomiast wymeldowanie następuje do godziny <strong>10:00</strong> w dniu wyjazdu. Jeśli planujesz przyjazd o innej porze (np. pociągiem), prosimy o wcześniejszy kontakt telefoniczny – chętnie się dostosujemy.
+                    </p>
+                </details>
+
+                <details class="group bg-white border border-sand-border rounded-2xl p-5 shadow-sm">
+                    <summary class="flex items-center justify-between cursor-pointer font-bold text-baltic text-base">
+                        <span>Czy na miejscu jest parking dla samochodów?</span>
+                        <span class="text-amberGold transition group-open:rotate-180">▼</span>
+                    </summary>
+                    <p class="text-stone-600 text-sm mt-3 leading-relaxed border-t border-sand-border pt-3">
+                        Tak, dla naszych Gości przygotowaliśmy prywatny, bezpieczny parking bezpośrednio na ogrodzonym terenie pensjonatu.
+                    </p>
+                </details>
+
+                <details class="group bg-white border border-sand-border rounded-2xl p-5 shadow-sm">
+                    <summary class="flex items-center justify-between cursor-pointer font-bold text-baltic text-base">
+                        <span>Jak wyposażone są pokoje i ogród?</span>
+                        <span class="text-amberGold transition group-open:rotate-180">▼</span>
+                    </summary>
+                    <p class="text-stone-600 text-sm mt-3 leading-relaxed border-t border-sand-border pt-3">
+                        Wszystkie pokoje posiadają własną łazienkę z prysznicem, wygodne łóżka ze świeżą pościelą, telewizor, czajnik oraz dostęp do szybkiego, bezpłatnego Wi‑Fi. Na zewnątrz do dyspozycji gości jest zadbany, zielony ogród oraz wydzielone miejsce na grilla.
+                    </p>
+                </details>
+            </div>
+        </section>
+
+        <!-- 12. BANER CTA -->
+        <section class="bg-gradient-to-br from-baltic to-baltic-dark rounded-3xl p-8 md:p-12 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div>
+                <h3 class="font-serif text-2xl md:text-3xl font-bold mb-2">Planujesz urlop w Ustroniu Morskim?</h3>
+                <p class="text-white/85 text-base">Zadzwoń do nas bezpośrednio – chętnie doradzimy i odpowiemy na każde pytanie!</p>
+            </div>
+            <a href="tel:665097710" class="bg-amberGold hover:bg-amberGold-hover text-white font-bold text-lg px-8 py-4 rounded-xl shadow-lg transition shrink-0">
+                Zadzwoń: 665 097 710
+            </a>
+        </section>
+
+        <!-- 13. SEKCJA KONTAKT I MAPA DOJAZDU -->
+        <section id="kontakt" class="scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-amberGold font-bold text-xs uppercase tracking-[0.15em] block mb-2">Lokalizacja i dojazd</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-baltic mb-3">Skontaktuj się z nami</h2>
+                <p class="text-stone-600 text-base">Jesteśmy do Twojej dyspozycji codziennie w godzinach 8:00 – 20:00.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-5 bg-white rounded-2xl border border-sand-border p-6 sm:p-8 shadow-md flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <h3 class="font-serif text-2xl font-bold text-baltic mb-4">Dane kontaktowe</h3>
+
+                        <div class="bg-sand-card border border-sand-border rounded-xl p-4 flex items-center gap-4">
+                            <svg class="w-6 h-6 text-baltic shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <div>
+                                <span class="text-xs text-stone-500 block">Telefon</span>
+                                <a href="tel:665097710" class="text-baltic font-bold text-lg hover:text-amberGold transition">665 097 710</a>
+                            </div>
+                        </div>
+
+                        <div class="bg-sand-card border border-sand-border rounded-xl p-4 flex items-center gap-4">
+                            <svg class="w-6 h-6 text-baltic shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                            </svg>
+                            <div>
+                                <span class="text-xs text-stone-500 block">Email</span>
+                                <a href="mailto:owagawa@ta.pl" class="text-baltic font-bold text-base hover:text-amberGold transition">owagawa@ta.pl</a>
+                            </div>
+                        </div>
+
+                        <div class="bg-sand-card border border-sand-border rounded-xl p-4 flex items-center gap-4">
+                            <svg class="w-6 h-6 text-baltic shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <div>
+                                <span class="text-xs text-stone-500 block">Godziny kontaktu</span>
+                                <strong class="text-baltic text-base">8:00 – 20:00</strong>
+                            </div>
+                        </div>
+
+                        <div class="bg-sand-card border border-sand-border rounded-xl p-4 flex items-center gap-4">
+                            <svg class="w-6 h-6 text-baltic shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <div>
+                                <span class="text-xs text-stone-500 block">Adres</span>
+                                <strong class="text-baltic text-base">ul. Kolejowa 6, 78‑111 Ustronie Morskie</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://maps.google.com/?q=ul.+Kolejowa+6,+78-111+Ustronie+Morskie" target="_blank" rel="noopener noreferrer" class="w-full bg-baltic hover:bg-baltic-dark text-white font-semibold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2.5 shadow transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+                        </svg>
+                        Otwórz nawigację w Google Maps
+                    </a>
+                </div>
+
+                <!-- Mapa Google -->
+                <div class="lg:col-span-7 bg-white rounded-2xl border border-sand-border p-3 shadow-md min-h-[400px] flex flex-col">
+                    <iframe 
+                        class="w-full flex-1 min-h-[380px] rounded-xl border border-sand-border"
+                        src="https://maps.google.com/maps?q=ul.+Kolejowa+6,+78-111+Ustronie+Morskie&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allowfullscreen
+                        title="Lokalizacja Pensjonatu AGAWA na mapie">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 14. STOPKA -->
+    <footer class="bg-sand-footer border-t border-[#dfd6c3] pt-12 text-[#4b555a]">
+        <div class="max-w-6xl mx-auto px-4 pb-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h4 class="font-serif text-xl font-bold text-baltic mb-3">Pensjonat AGAWA</h4>
+                <p class="text-sm leading-relaxed">
+                    Rodzinny wypoczynek nad morzem od ponad 30 lat. Zapraszamy gości indywidualnych i rodziny z dziećmi do Ustronia Morskiego.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold text-baltic text-base mb-3">Nawigacja</h4>
+                <ul class="space-y-2 text-sm font-medium">
+                    <li><a href="#oferta" class="text-baltic hover:text-amberGold transition">Oferta i pokoje</a></li>
+                    <li><a href="#udogodnienia" class="text-baltic hover:text-amberGold transition">Udogodnienia</a></li>
+                    <li><a href="#cennik" class="text-baltic hover:text-amberGold transition">Cennik i rezerwacje</a></li>
+                    <li><a href="#galeria" class="text-baltic hover:text-amberGold transition">Galeria</a></li>
+                    <li><a href="#o-nas" class="text-baltic hover:text-amberGold transition">O nas i opinie</a></li>
+                    <li><a href="#faq" class="text-baltic hover:text-amberGold transition">Najczęstsze pytania (FAQ)</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-baltic text-base mb-3">Kontakt</h4>
+                <p class="text-sm mb-1.5">ul. Kolejowa 6, 78‑111 Ustronie Morskie</p>
+                <p class="text-sm mb-1.5">Tel: <a href="tel:665097710" class="text-baltic font-bold hover:text-amberGold">665 097 710</a></p>
+                <p class="text-sm mb-1.5">Email: <a href="mailto:owagawa@ta.pl" class="text-baltic font-medium hover:text-amberGold">owagawa@ta.pl</a></p>
+                <p class="text-xs text-stone-500 mt-2">Konto (zadatek 200 zł): 33 1020 2821 0000 1202 0002 0966</p>
+            </div>
+        </div>
+        <div class="border-t border-[#e0d6c0] text-center py-4 px-4 text-xs text-stone-500">
+            © <span id="year"></span> Pensjonat AGAWA. Wszelkie prawa zastrzeżone.
+        </div>
+    </footer>
+
+    <!-- 15. PŁYWAJĄCY PASEK KONTAKTU NA SMARTFONACH -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-sand-border p-2.5 flex gap-2 shadow-[0_-4px_15px_rgba(0,0,0,0.08)]">
+        <a href="tel:665097710" class="flex-1 bg-baltic text-white font-bold text-xs py-3 rounded-xl flex items-center justify-center gap-1.5 shadow">
+            <span>📞 Zadzwoń: 665 097 710</span>
+        </a>
+        <a href="#cennik" class="flex-1 bg-amberGold text-white font-bold text-xs py-3 rounded-xl flex items-center justify-center gap-1.5 shadow">
+            <span>📅 Zapytaj o termin</span>
+        </a>
     </div>
+
+    <!-- MODAL LIGHTBOX DO POWIĘKSZANIA ZDJĘĆ GALERII -->
+    <div id="lightbox" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-sm flex items-center justify-center p-4" onclick="closeLightbox()">
+        <div class="relative max-w-4xl w-full" onclick="event.stopPropagation()">
+            <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white hover:text-amberGold-light font-bold text-sm flex items-center gap-1">
+                <span>Zamknij</span>
+                <span class="text-xl">✕</span>
+            </button>
+            <img id="lightbox-img" src="" alt="" class="w-full max-h-[80vh] object-contain rounded-xl shadow-2xl">
+            <p id="lightbox-caption" class="text-center text-white font-medium mt-3 text-sm sm:text-base"></p>
+        </div>
+    </div>
+
+    <!-- SKRYPTY OBSŁUGUJĄCE STRONĘ -->
+    <script>
+        // Aktualny rok w stopce
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Obsługa menu mobilnego
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Kopiowanie numeru konta bankowego
+        function copyAccount() {
+            const acc = document.getElementById('bank-account').innerText;
+            const btn = document.getElementById('copy-btn');
+            navigator.clipboard.writeText(acc).then(() => {
+                const original = btn.innerText;
+                btn.innerText = '✓ Skopiowano!';
+                btn.classList.add('bg-emerald-700', 'text-white');
+                setTimeout(() => {
+                    btn.innerText = original;
+                    btn.classList.remove('bg-emerald-700', 'text-white');
+                }, 2500);
+            });
+        }
+
+        // Automatyczny wybór pokoju w formularzu po kliknięciu w karcie pokoju
+        function selectRoomInForm(roomName) {
+            const select = document.getElementById('form-room');
+            if (select) {
+                select.value = roomName;
+            }
+        }
+
+        // Obsługa formularza zapytania o termin (generuje gotowego maila na owagawa@ta.pl)
+        function handleInquirySubmit(e) {
+            e.preventDefault();
+            const checkin = document.getElementById('form-checkin').value;
+            const checkout = document.getElementById('form-checkout').value;
+            const room = document.getElementById('form-room').value;
+            const guests = document.getElementById('form-guests').value;
+            const name = document.getElementById('form-name').value;
+            const phone = document.getElementById('form-phone').value;
+            const notes = document.getElementById('form-notes').value;
+
+            const subject = encodeURIComponent(`Zapytanie o rezerwację: ${checkin} do ${checkout} - ${name}`);
+            const body = encodeURIComponent(
+                `Dzień dobry,\n\nProszę o informację o dostępności noclegu w Pensjonacie AGAWA:\n` +
+                `- Termin: od ${checkin} do ${checkout}\n` +
+                `- Wybrany pokój: ${room}\n` +
+                `- Liczba osób: ${guests}\n` +
+                `- Imię i nazwisko: ${name}\n` +
+                `- Telefon kontaktowy: ${phone}\n` +
+                (notes ? `- Dodatkowe uwagi: ${notes}\n` : '') +
+                `\nPozdrawiam,\n${name}`
+            );
+
+            window.location.href = `mailto:owagawa@ta.pl?subject=${subject}&body=${body}`;
+            document.getElementById('form-feedback').classList.remove('hidden');
+        }
+
+        // Lightbox galerii
+        function openLightbox(src, caption) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox-caption').textContent = caption;
+            document.getElementById('lightbox').classList.remove('hidden');
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.add('hidden');
+        }
+    </script>
 
 </body>
 </html>
